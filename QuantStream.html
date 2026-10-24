@@ -577,7 +577,7 @@
           ◀ <span class="label">Previous Slide</span>
         </button>
         <div class="slide-indicator">
-          <div class="slide-badge" id="slide-num-top">SLIDE 1 OF 11</div>
+          <div class="slide-badge" id="slide-num-top">SLIDE 1 OF 12</div>
           <div class="slide-topic-title" id="slide-title-top">How to Launch (.bat vs .ps1)</div>
         </div>
         <button id="next-btn-top" class="nav-btn" onclick="nextSlide()">
@@ -1257,6 +1257,96 @@ ENTER-LONG_KRAKEN_SOLUSD_ZIGZAG.V4.SBD.100-KrakenDemo_1M_93004ed3330782d3770ccd1
       </div>
     </div>
 
+    <!-- ==================== SLIDE 12 ==================== -->
+    <div class="slide-panel" data-title="12. Running on Android (Phones & Tablets)">
+      <div class="card">
+        <h2>📱 Topic 12: Running QuantStream on Android Phones & Tablets</h2>
+        <p>Because Android is built on the Linux kernel, you can execute the Python strategy directly on Android smartphones and tablets without needing a desktop PC or server.</p>
+
+        <div class="grid-2">
+          <!-- Method 1: Termux -->
+          <div class="launch-box recommended">
+            <h3>Method 1: Termux (Linux Terminal) <span class="tag-rec">Recommended</span></h3>
+            <p>The standard, institutional way to run 24/7 background Python on Android:</p>
+            <div class="timeline" style="margin-left: 0; padding-left: 18px;">
+              <div class="step-item">
+                <div class="step-title">1. Install Termux</div>
+                <div class="step-desc">Download Termux from <strong>F-Droid</strong> (avoid Google Play Store version as it is deprecated).</div>
+              </div>
+              <div class="step-item">
+                <div class="step-title">2. Install Python & Libraries</div>
+                <div class="step-desc">Open Termux and run:</div>
+                <div class="code-block">
+                  <div class="code-header"><span>Termux Command</span><button class="copy-btn" onclick="copyText('pkg update && pkg install python git -y && pip install ccxt pandas requests')">Copy</button></div>
+                  <code>pkg update && pkg install python git -y
+pip install ccxt pandas requests</code>
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-title">3. Prevent Android Sleep (Crucial)</div>
+                <div class="step-desc">Prevent Android OS from sleeping the CPU when the screen turns off:</div>
+                <div class="code-block">
+                  <div class="code-header"><span>Termux Command</span><button class="copy-btn" onclick="copyText('termux-wake-lock')">Copy</button></div>
+                  <code>termux-wake-lock</code>
+                </div>
+                <p style="font-size: 0.8rem; color: var(--accent);">*Also set Termux Battery Usage to "Unrestricted" in Android Settings.</p>
+              </div>
+              <div class="step-item">
+                <div class="step-title">4. Launch the Bot</div>
+                <div class="step-desc">Set environment parameters and execute:</div>
+                <div class="code-block">
+                  <div class="code-header"><span>Termux Command</span><button class="copy-btn" onclick="copyText('export ALT_TIMEFRAME=\"47\"\nexport SYMBOLS=\"SOL/USD:USD\"\npython Strategy.ZIGZAG.V4.SBD.67.py')">Copy</button></div>
+                  <code>export ALT_TIMEFRAME="47"
+export SYMBOLS="SOL/USD:USD"
+python Strategy.ZIGZAG.V4.SBD.67.py</code>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Method 2: Pydroid 3 -->
+          <div class="launch-box">
+            <h3>Method 2: Pydroid 3 (GUI IDE App)</h3>
+            <p>For users who prefer an app interface with buttons instead of terminal commands:</p>
+            <div class="timeline" style="margin-left: 0; padding-left: 18px;">
+              <div class="step-item">
+                <div class="step-title">1. Install from Google Play</div>
+                <div class="step-desc">Search and install <strong>Pydroid 3</strong> from the Google Play Store.</div>
+              </div>
+              <div class="step-item">
+                <div class="step-title">2. Install Required PIP Packages</div>
+                <div class="step-desc">Open the Pydroid menu &rarr; tap <strong>Pip</strong> &rarr; install:
+                  <br>&bull; <span class="code-pill">ccxt</span>
+                  <br>&bull; <span class="code-pill">pandas</span>
+                  <br>&bull; <span class="code-pill">requests</span>
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-title">3. Open File & Tap Play</div>
+                <div class="step-desc">Open <span class="code-pill">Strategy.ZIGZAG.V4.SBD.67.py</span> in Pydroid and tap the yellow <strong>Play Button (▶)</strong>.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3 style="color: var(--primary); margin-top: 20px;">Operational Best Practices for Mobile 24/7 Trading</h3>
+        <div class="grid-3">
+          <div class="card" style="background: #0f172a; border-color: #1e293b;">
+            <h4 style="color: var(--warning);">⚡ Power & Battery</h4>
+            <p style="font-size: 0.88rem; color: var(--text-muted);">Keep the phone connected to a charger. Continuous 1-minute network polling can deplete a battery over 24 hours.</p>
+          </div>
+          <div class="card" style="background: #0f172a; border-color: #1e293b;">
+            <h4 style="color: var(--accent);">📶 Wi-Fi Sleep Policy</h4>
+            <p style="font-size: 0.88rem; color: var(--text-muted);">In Android Wi-Fi settings, ensure <em>"Keep Wi-Fi on during sleep"</em> is enabled so background polling is never severed.</p>
+          </div>
+          <div class="card" style="background: #0f172a; border-color: #1e293b;">
+            <h4 style="color: var(--primary);">🌐 Portable Hotspot Node</h4>
+            <p style="font-size: 0.88rem; color: var(--text-muted);">Your phone functions as an independent, portable algorithmic node that trades over 4G/5G mobile data anywhere.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- BOTTOM NAVIGATION BAR -->
     <div class="slide-nav bottom">
       <div class="nav-controls">
@@ -1264,7 +1354,7 @@ ENTER-LONG_KRAKEN_SOLUSD_ZIGZAG.V4.SBD.100-KrakenDemo_1M_93004ed3330782d3770ccd1
           ◀ <span class="label">Previous Slide</span>
         </button>
         <div class="slide-indicator">
-          <div class="slide-badge" id="slide-num-bottom">SLIDE 1 OF 11</div>
+          <div class="slide-badge" id="slide-num-bottom">SLIDE 1 OF 12</div>
           <div class="slide-topic-title" id="slide-title-bottom">How to Launch (.bat vs .ps1)</div>
         </div>
         <button id="next-btn-bottom" class="nav-btn" onclick="nextSlide()">
