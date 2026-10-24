@@ -560,11 +560,11 @@
     <h1>QuantStream: ZigZag PA Strategy V4.1</h1>
     <p class="subtitle">Multi-Timeframe Harmonic Recognition Engine & Automated WunderTrading Execution System</p>
     <div class="meta-bar">
-      <div class="meta-item"><span>Exchange:</span> <strong>BinanceKraken Spot/Futures</strong></div>
-      <div class="meta-item"><span>Pair:</span> <strong>CryptoPair</strong></div>
-      <div class="meta-item"><span>Alt Timeframe:</span> <strong>67-Minute (Brain)</strong></div>
-      <div class="meta-item"><span>Poller:</span> <strong>1-Minute (Trigger)</strong></div>
-      <div class="meta-item"><span>Mode:</span> <strong>RT/ME/EXIT</strong></div>
+      <div class="meta-item"><span>Supported Exchanges:</span> <strong>Kraken & Binance (Futures & Spot)</strong></div>
+      <div class="meta-item"><span>Example Pairs:</span> <strong>SOL/USD, SOL/USDT, SOL/USDC</strong></div>
+      <div class="meta-item"><span>Alt Timeframe:</span> <strong>Configurable (e.g., 67m, 47m)</strong></div>
+      <div class="meta-item"><span>Base Poller:</span> <strong>1-Minute Execution</strong></div>
+      <div class="meta-item"><span>Execution Modes:</span> <strong>Swing Reversal & Stacking Options</strong></div>
     </div>
   </header>
 
@@ -577,7 +577,7 @@
           ◀ <span class="label">Previous Slide</span>
         </button>
         <div class="slide-indicator">
-          <div class="slide-badge" id="slide-num-top">SLIDE 1 OF 12</div>
+          <div class="slide-badge" id="slide-num-top">SLIDE 1 OF 13</div>
           <div class="slide-topic-title" id="slide-title-top">How to Launch (.bat vs .ps1)</div>
         </div>
         <button id="next-btn-top" class="nav-btn" onclick="nextSlide()">
@@ -749,17 +749,17 @@
     </div>
 
     <!-- ==================== SLIDE 4 ==================== -->
-    <div class="slide-panel" data-title="4. Real Money: Spot vs Futures">
+    <div class="slide-panel" data-title="4. Spot vs Futures Architecture">
       <div class="card">
-        <h2>💰 Topic 4: Real Money Trading: Spot vs Futures (Kraken & Binance)</h2>
-        <p>A complete institutional guide on fund requirements, short selling mechanics, and real account execution across Kraken and Binance with QuantStream and WunderTrading.</p>
+        <h2>💰 Topic 4: Spot vs Futures Architecture (Kraken & Binance)</h2>
+        <p>A comprehensive structural guide on collateral requirements, short selling mechanics, and account execution across Kraken and Binance with QuantStream and WunderTrading.</p>
 
         <!-- Do you need funds on both sides? -->
         <div class="alert alert-info">
           <div>
             <strong>Do You Need Funds on Both Sides (Cash & Crypto)?</strong><br>
             &bull; <strong>In Futures (Perpetual Swap)</strong>: <span style="color: var(--accent); font-weight: bold;">NO!</span> You only need <strong>one collateral currency (USD or USDT)</strong>. You do NOT need to own SOL to short SOL!<br>
-            &bull; <strong>In Spot</strong>: <span style="color: var(--warning); font-weight: bold;">YES!</span> To buy you need cash (USD/USDT); to sell you must already physically hold the crypto (SOL).
+            &bull; <strong>In Spot</strong>: <span style="color: var(--warning); font-weight: bold;">YES!</span> To buy you need cash (USD/USDC); to sell you must already physically hold the crypto (SOL).
           </div>
         </div>
 
@@ -769,9 +769,9 @@
             <h4 style="color: var(--warning); margin-bottom: 8px;">Spot Account Mechanics (Asset Ownership)</h4>
             <p><strong>You trade physical tokens:</strong></p>
             <ul style="color: var(--text-muted); margin-left: 18px; font-size: 0.92rem; line-height: 1.7;">
-              <li><strong>Going Long (Buy)</strong>: You spend USD/USDT to purchase and physically own SOL tokens in your exchange wallet.</li>
+              <li><strong>Going Long (Buy)</strong>: You spend USD/USDC to purchase and physically own SOL tokens in your exchange wallet.</li>
               <li><strong>Going Short (Sell)</strong>: In standard Spot, <em>you cannot open a true short from cash</em>. You can only sell the SOL tokens you already hold back to cash.</li>
-              <li><strong>Capital Required</strong>: You need Quote currency (USD/USDT) to buy, and Base cryptocurrency (SOL) to sell.</li>
+              <li><strong>Capital Required</strong>: You need Quote currency (USD/USDC) to buy, and Base cryptocurrency (SOL) to sell.</li>
               <li><strong>Strategy Mode</strong>: In Spot, the strategy becomes a <strong>1-Way Long/Cash System</strong>: Buy dips &rarr; Sell to 100% cash &rarr; Wait in cash for the next buy.</li>
             </ul>
           </div>
@@ -788,59 +788,59 @@
           </div>
         </div>
 
-        <h3 style="color: var(--primary); margin-top: 24px;">2. Real Money Execution: Kraken Accounts</h3>
+        <h3 style="color: var(--primary); margin-top: 24px;">2. Execution Architecture: Kraken Accounts</h3>
         <div class="grid-2">
           <div class="launch-box recommended">
-            <h3>Kraken Futures (Real Account) <span class="tag-rec">Current Setup</span></h3>
+            <h3>Kraken Futures Account</h3>
             <p>Target Symbol: <span class="code-pill">SOL/USD:USD</span> (Perpetual Swap)</p>
             <ul style="color: var(--text-muted); margin-left: 18px; font-size: 0.9rem; line-height: 1.8;">
               <li><strong>Wallet Required</strong>: Kraken Futures Wallet funded with <strong>USD</strong>.</li>
               <li><strong>ENTER-LONG</strong>: Uses USD margin to open a leveraged or 1x Long contract.</li>
               <li><strong>EXIT-ALL</strong>: Closes the contract, unlocks your USD margin, and credits profit/loss in USD.</li>
               <li><strong>ENTER-SHORT</strong>: Opens a Short position using USD margin. When SOL price drops, your USD balance grows!</li>
-              <li><strong>QuantStream Configuration</strong>: <span class="code-pill">EXCHANGE_ID=krakenfutures</span>, <span class="code-pill">MARKET_TYPE=swap</span>, <span class="code-pill">SYMBOLS=SOL/USD:USD</span>.</li>
+              <li><strong>Launcher Settings</strong>: <span class="code-pill">EXCHANGE_ID=krakenfutures</span>, <span class="code-pill">MARKET_TYPE=swap</span>, <span class="code-pill">SYMBOLS=SOL/USD:USD</span>.</li>
             </ul>
           </div>
 
           <div class="launch-box">
-            <h3>Kraken Spot (Real Account)</h3>
+            <h3>Kraken Spot Account</h3>
             <p>Target Symbol: <span class="code-pill">SOL/USD</span> (Spot Market)</p>
             <ul style="color: var(--text-muted); margin-left: 18px; font-size: 0.9rem; line-height: 1.8;">
               <li><strong>Wallet Required</strong>: Kraken Spot Wallet funded with <strong>USD</strong>.</li>
               <li><strong>ENTER-LONG</strong>: Spends USD cash to buy physical SOL.</li>
               <li><strong>EXIT-ALL / EXIT-LONG</strong>: Sells physical SOL back to USD cash.</li>
               <li><strong>ENTER-SHORT</strong>: Without margin borrowing enabled, Spot cannot short from cash. The bot simply sits in 100% USD cash (preserving capital).</li>
-              <li><strong>QuantStream Configuration</strong>: <span class="code-pill">EXCHANGE_ID=kraken</span>, <span class="code-pill">MARKET_TYPE=spot</span>, <span class="code-pill">SYMBOLS=SOL/USD</span>.</li>
+              <li><strong>Launcher Settings</strong>: <span class="code-pill">EXCHANGE_ID=kraken</span>, <span class="code-pill">MARKET_TYPE=spot</span>, <span class="code-pill">SYMBOLS=SOL/USD</span>.</li>
             </ul>
           </div>
         </div>
 
-        <h3 style="color: var(--primary); margin-top: 24px;">3. Real Money Execution: Binance Accounts</h3>
+        <h3 style="color: var(--primary); margin-top: 24px;">3. Execution Architecture: Binance Accounts</h3>
         <div class="grid-2">
           <div class="launch-box recommended">
-            <h3>Binance Futures (USDⓈ-M Real Account)</h3>
-            <p>Target Symbol: <span class="code-pill">SOL/USDT</span> (Perpetual Swap)</p>
+            <h3>Binance Futures Account (USDⓈ-M)</h3>
+            <p>Target Symbol: <span class="code-pill">SOL/USDT:USDT</span> (Perpetual Swap)</p>
             <ul style="color: var(--text-muted); margin-left: 18px; font-size: 0.9rem; line-height: 1.8;">
               <li><strong>Wallet Required</strong>: USDⓈ-M Futures Wallet funded with <strong>USDT</strong>.</li>
               <li><strong>Fund Requirement</strong>: <strong>Only USDT</strong>. You do not need any SOL in your account.</li>
               <li><strong>Execution Flow</strong>:
-                <br>&bull; Long trade: Uses USDT margin to buy SOLUSDT perpetual contracts.
-                <br>&bull; Short trade: Uses the exact same USDT margin to short SOLUSDT contracts. No SOL needed!
+                <br>&bull; Long trade: Uses USDT margin to buy SOL/USDT perpetual contracts.
+                <br>&bull; Short trade: Uses the exact same USDT margin to short SOL/USDT contracts. No SOL needed!
                 <br>&bull; Both profits and losses settle in USDT.
               </li>
-              <li><strong>QuantStream Configuration</strong>: <span class="code-pill">EXCHANGE_ID=binance</span>, <span class="code-pill">MARKET_TYPE=swap</span>, <span class="code-pill">SYMBOLS=SOL/USDT</span>.</li>
+              <li><strong>Launcher Settings</strong>: <span class="code-pill">EXCHANGE_ID=binance</span>, <span class="code-pill">MARKET_TYPE=swap</span>, <span class="code-pill">SYMBOLS=SOL/USDT:USDT</span>.</li>
             </ul>
           </div>
 
           <div class="launch-box">
-            <h3>Binance Spot (Real Account)</h3>
-            <p>Target Symbol: <span class="code-pill">SOL/USDT</span> (Spot Market)</p>
+            <h3>Binance Spot Account (USDC Pair)</h3>
+            <p>Target Symbol: <span class="code-pill">SOL/USDC</span> (Spot Market)</p>
             <ul style="color: var(--text-muted); margin-left: 18px; font-size: 0.9rem; line-height: 1.8;">
-              <li><strong>Wallet Required</strong>: Binance Spot/Fiat Wallet funded with <strong>USDT</strong>.</li>
-              <li><strong>ENTER-LONG</strong>: Buys SOL using USDT.</li>
-              <li><strong>EXIT-ALL</strong>: Sells SOL back into USDT.</li>
-              <li><strong>ENTER-SHORT</strong>: Cannot short in standard spot. Holds 100% USDT until the next Long signal.</li>
-              <li><strong>QuantStream Configuration</strong>: <span class="code-pill">EXCHANGE_ID=binance</span>, <span class="code-pill">MARKET_TYPE=spot</span>, <span class="code-pill">SYMBOLS=SOL/USDT</span>.</li>
+              <li><strong>Wallet Required</strong>: Binance Spot/Fiat Wallet funded with <strong>USDC</strong>.</li>
+              <li><strong>ENTER-LONG</strong>: Buys physical SOL using USDC cash.</li>
+              <li><strong>EXIT-ALL</strong>: Sells physical SOL back into USDC cash.</li>
+              <li><strong>ENTER-SHORT</strong>: Cannot short in standard spot. Holds 100% USDC until the next Long signal.</li>
+              <li><strong>Launcher Settings</strong>: <span class="code-pill">EXCHANGE_ID=binance</span>, <span class="code-pill">MARKET_TYPE=spot</span>, <span class="code-pill">SYMBOLS=SOL/USDC</span>.</li>
             </ul>
           </div>
         </div>
@@ -866,13 +866,6 @@
                 <td>100% Full 2-Way Swing Reversal</td>
               </tr>
               <tr>
-                <td><strong>Binance Futures (swap)</strong></td>
-                <td>USDT (Cash Margin)</td>
-                <td>USDT (Cash Margin)</td>
-                <td><span style="color: var(--accent); font-weight: bold;">Yes (Zero SOL needed)</span></td>
-                <td>100% Full 2-Way Swing Reversal</td>
-              </tr>
-              <tr>
                 <td><strong>Kraken Spot (spot)</strong></td>
                 <td>USD (Cash)</td>
                 <td>Physical SOL Tokens</td>
@@ -880,8 +873,15 @@
                 <td>1-Way Long &amp; Cash Only</td>
               </tr>
               <tr>
+                <td><strong>Binance Futures (swap)</strong></td>
+                <td>USDT (Cash Margin)</td>
+                <td>USDT (Cash Margin)</td>
+                <td><span style="color: var(--accent); font-weight: bold;">Yes (Zero SOL needed)</span></td>
+                <td>100% Full 2-Way Swing Reversal</td>
+              </tr>
+              <tr>
                 <td><strong>Binance Spot (spot)</strong></td>
-                <td>USDT (Cash)</td>
+                <td>USDC (Cash)</td>
                 <td>Physical SOL Tokens</td>
                 <td><span style="color: var(--danger); font-weight: bold;">No (Must hold SOL)</span></td>
                 <td>1-Way Long &amp; Cash Only</td>
@@ -893,9 +893,128 @@
     </div>
 
     <!-- ==================== SLIDE 5 ==================== -->
-    <div class="slide-panel" data-title="5. Multi-Timeframe (MTF) Architecture">
+    <div class="slide-panel" data-title="5. Exchange & Pair Configuration Settings">
       <div class="card">
-        <h2>🧠 Topic 5: Multi-Timeframe (MTF) Architecture Explained</h2>
+        <h2>⚙️ Topic 5: Exchange & Market Pair Configuration Settings</h2>
+        <p>Use these copy-paste ready code blocks to configure the launcher script for your desired exchange and market type. Modify lines 16–18 inside <span class="code-pill">Start.Strategy.ZIGZAG.V4.SBD.67.ps1</span>:</p>
+
+        <div class="grid-2">
+          <!-- 1. Kraken Futures -->
+          <div class="launch-box recommended">
+            <h3>1. Kraken Futures (Perpetual Swap)</h3>
+            <p>Trading perpetual contracts settled in USD margin:</p>
+            <div class="code-block">
+              <div class="code-header"><span>PowerShell</span><button class="copy-btn" onclick="copyText('$env:EXCHANGE_ID = \"krakenfutures\"\n$env:MARKET_TYPE = \"swap\"\n$env:SYMBOLS     = \"SOL/USD:USD\"')">Copy</button></div>
+              <code>$env:EXCHANGE_ID = "krakenfutures"
+$env:MARKET_TYPE = "swap"
+$env:SYMBOLS     = "SOL/USD:USD"</code>
+            </div>
+            <ul style="color: var(--text-muted); font-size: 0.86rem; line-height: 1.6; margin-left: 16px;">
+              <li>Uses <span class="code-pill">swap</span>: CCXT classifies all perpetual futures as swap.</li>
+              <li>Uses <span class="code-pill">:USD</span> suffix: Identifies USD as the margin settlement currency.</li>
+            </ul>
+          </div>
+
+          <!-- 2. Kraken Spot -->
+          <div class="launch-box">
+            <h3>2. Kraken Spot (Physical Trading)</h3>
+            <p>Trading physical SOL tokens against USD cash:</p>
+            <div class="code-block">
+              <div class="code-header"><span>PowerShell</span><button class="copy-btn" onclick="copyText('$env:EXCHANGE_ID = \"kraken\"\n$env:MARKET_TYPE = \"spot\"\n$env:SYMBOLS     = \"SOL/USD\"')">Copy</button></div>
+              <code>$env:EXCHANGE_ID = "kraken"
+$env:MARKET_TYPE = "spot"
+$env:SYMBOLS     = "SOL/USD"</code>
+            </div>
+            <ul style="color: var(--text-muted); font-size: 0.86rem; line-height: 1.6; margin-left: 16px;">
+              <li>Uses <span class="code-pill">spot</span>: Pure spot token exchange.</li>
+              <li>No colon suffix: Physical pairs use standard <span class="code-pill">BASE/QUOTE</span>.</li>
+            </ul>
+          </div>
+
+          <!-- 3. Binance Futures -->
+          <div class="launch-box recommended">
+            <h3>3. Binance Futures (USDⓈ-M Swap)</h3>
+            <p>Trading perpetual contracts settled in USDT margin:</p>
+            <div class="code-block">
+              <div class="code-header"><span>PowerShell</span><button class="copy-btn" onclick="copyText('$env:EXCHANGE_ID = \"binance\"\n$env:MARKET_TYPE = \"swap\"\n$env:SYMBOLS     = \"SOL/USDT:USDT\"')">Copy</button></div>
+              <code>$env:EXCHANGE_ID = "binance"
+$env:MARKET_TYPE = "swap"
+$env:SYMBOLS     = "SOL/USDT:USDT"</code>
+            </div>
+            <ul style="color: var(--text-muted); font-size: 0.86rem; line-height: 1.6; margin-left: 16px;">
+              <li>Uses <span class="code-pill">swap</span>: Binance USDⓈ-M perpetual contracts.</li>
+              <li>Uses <span class="code-pill">:USDT</span> suffix: Identifies USDT as the margin settlement currency.</li>
+            </ul>
+          </div>
+
+          <!-- 4. Binance Spot -->
+          <div class="launch-box">
+            <h3>4. Binance Spot (USDC Pair)</h3>
+            <p>Trading physical SOL tokens against USDC cash:</p>
+            <div class="code-block">
+              <div class="code-header"><span>PowerShell</span><button class="copy-btn" onclick="copyText('$env:EXCHANGE_ID = \"binance\"\n$env:MARKET_TYPE = \"spot\"\n$env:SYMBOLS     = \"SOL/USDC\"')">Copy</button></div>
+              <code>$env:EXCHANGE_ID = "binance"
+$env:MARKET_TYPE = "spot"
+$env:SYMBOLS     = "SOL/USDC"</code>
+            </div>
+            <ul style="color: var(--text-muted); font-size: 0.86rem; line-height: 1.6; margin-left: 16px;">
+              <li>Uses <span class="code-pill">spot</span>: Physical token trading.</li>
+              <li>Uses <span class="code-pill">SOL/USDC</span>: Direct USDC quote pairing without derivative suffix.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 style="color: var(--primary); margin-top: 20px;">Configuration Summary Matrix</h3>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Exchange & Market</th>
+                <th>$env:EXCHANGE_ID</th>
+                <th>$env:MARKET_TYPE</th>
+                <th>$env:SYMBOLS</th>
+                <th>Execution Behavior</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Kraken Futures</strong></td>
+                <td><span class="code-pill">krakenfutures</span></td>
+                <td><span class="code-pill">swap</span></td>
+                <td><span class="code-pill">SOL/USD:USD</span></td>
+                <td>Full 2-Way Swing Reversal (Long &amp; Short via USD Margin)</td>
+              </tr>
+              <tr>
+                <td><strong>Kraken Spot</strong></td>
+                <td><span class="code-pill">kraken</span></td>
+                <td><span class="code-pill">spot</span></td>
+                <td><span class="code-pill">SOL/USD</span></td>
+                <td>1-Way Long &amp; Cash (Buy with USD, Sell to USD)</td>
+              </tr>
+              <tr>
+                <td><strong>Binance Futures</strong></td>
+                <td><span class="code-pill">binance</span></td>
+                <td><span class="code-pill">swap</span></td>
+                <td><span class="code-pill">SOL/USDT:USDT</span></td>
+                <td>Full 2-Way Swing Reversal (Long &amp; Short via USDT Margin)</td>
+              </tr>
+              <tr>
+                <td><strong>Binance Spot</strong></td>
+                <td><span class="code-pill">binance</span></td>
+                <td><span class="code-pill">spot</span></td>
+                <td><span class="code-pill">SOL/USDC</span></td>
+                <td>1-Way Long &amp; Cash (Buy with USDC, Sell to USDC)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== SLIDE 6 ==================== -->
+    <div class="slide-panel" data-title="6. Multi-Timeframe (MTF) Architecture">
+      <div class="card">
+        <h2>🧠 Topic 6: Multi-Timeframe (MTF) Architecture Explained</h2>
         <p>Why does the bot poll 1-minute bars if the strategy is 67 minutes? This dual-speed engine solves the two biggest challenges in quantitative trading:</p>
 
         <div class="grid-2">
@@ -926,10 +1045,10 @@
       </div>
     </div>
 
-    <!-- ==================== SLIDE 6 ==================== -->
-    <div class="slide-panel" data-title="6. Configuration & Free Tier Rules">
+    <!-- ==================== SLIDE 7 ==================== -->
+    <div class="slide-panel" data-title="7. Configuration & Free Tier Rules">
       <div class="card">
-        <h2>⚙️ Topic 6: Configuration Matrix & WunderTrading Free Tier Rules</h2>
+        <h2>⚙️ Topic 7: Configuration Matrix & WunderTrading Free Tier Rules</h2>
         <p>All active parameters configured in your launcher script:</p>
 
         <div class="table-container">
@@ -1003,10 +1122,10 @@
       </div>
     </div>
 
-    <!-- ==================== SLIDE 7 ==================== -->
-    <div class="slide-panel" data-title="7. Harmonic Math & Formulas">
+    <!-- ==================== SLIDE 8 ==================== -->
+    <div class="slide-panel" data-title="8. Harmonic Math & Formulas">
       <div class="card">
-        <h2>📐 Topic 7: Backend Mathematics, Calculations & Geometric Formulas</h2>
+        <h2>📐 Topic 8: Backend Mathematics, Calculations & Geometric Formulas</h2>
         <p>The strategy utilizes pure mathematical harmonic geometry across the last 5 confirmed pivots: <span class="code-pill">x, a, b, c, d</span>.</p>
 
         <h3 style="color: var(--primary);">1. Leg Lengths & Fibonacci Ratios</h3>
@@ -1082,10 +1201,10 @@
       </div>
     </div>
 
-    <!-- ==================== SLIDE 8 ==================== -->
-    <div class="slide-panel" data-title="8. Swing Reversal & Webhooks">
+    <!-- ==================== SLIDE 9 ==================== -->
+    <div class="slide-panel" data-title="9. Swing Reversal & Webhooks">
       <div class="card">
-        <h2>🔄 Topic 8: Swing Reversal Execution Engine & Webhook Protocols</h2>
+        <h2>🔄 Topic 9: Swing Reversal Execution Engine & Webhook Protocols</h2>
         <p>How the bot orchestrates clean position reversals on WunderTrading without order rejections:</p>
 
         <div class="grid-2">
@@ -1111,15 +1230,15 @@
           <code>POST https://wtalerts.com/bot/other
 Content-Type: text/plain; charset=utf-8
 
-ENTER-LONG_KRAKEN_SOLUSD_ZIGZAG.V4.SBD.100-KrakenDemo_1M_93004ed3330782d3770ccd11</code>
+ENTER-LONG_KRAKEN_SOLUSD_ZIGZAG.V4.SBD.100-Kraken_1M_93004ed3330782d3770ccd11</code>
         </div>
       </div>
     </div>
 
-    <!-- ==================== SLIDE 9 ==================== -->
-    <div class="slide-panel" data-title="9. Real-Time Telemetry & Monitoring">
+    <!-- ==================== SLIDE 10 ==================== -->
+    <div class="slide-panel" data-title="10. Real-Time Telemetry & Monitoring">
       <div class="card">
-        <h2>📊 Topic 9: Real-Time Status Telemetry & Log Monitoring</h2>
+        <h2>📊 Topic 10: Real-Time Status Telemetry & Log Monitoring</h2>
         <p>The poller outputs a status heartbeat every 5 minutes so you always know the exact internal state of the strategy:</p>
 
         <div class="log-box">
@@ -1177,10 +1296,10 @@ ENTER-LONG_KRAKEN_SOLUSD_ZIGZAG.V4.SBD.100-KrakenDemo_1M_93004ed3330782d3770ccd1
       </div>
     </div>
 
-    <!-- ==================== SLIDE 10 ==================== -->
-    <div class="slide-panel" data-title="10. Timeframe Reality (4h = 3.5 Bars)">
+    <!-- ==================== SLIDE 11 ==================== -->
+    <div class="slide-panel" data-title="11. Timeframe Reality (4h = 3.5 Bars)">
       <div class="card">
-        <h2>⏳ Topic 10: Timeframe Reality: Why 4 Hours is Only ~3.5 Bars</h2>
+        <h2>⏳ Topic 11: Timeframe Reality: Why 4 Hours is Only ~3.5 Bars</h2>
         <p>A common misconception in algorithmic trading is expecting higher-timeframe strategies to fire constantly. Here is the mathematical reality of trading on a 67-minute chart:</p>
 
         <div class="grid-2">
@@ -1221,10 +1340,10 @@ ENTER-LONG_KRAKEN_SOLUSD_ZIGZAG.V4.SBD.100-KrakenDemo_1M_93004ed3330782d3770ccd1
       </div>
     </div>
 
-    <!-- ==================== SLIDE 11 ==================== -->
-    <div class="slide-panel" data-title="11. Signal Frequency & Swing Edge">
+    <!-- ==================== SLIDE 12 ==================== -->
+    <div class="slide-panel" data-title="12. Signal Frequency & Swing Edge">
       <div class="card">
-        <h2>🎯 Topic 11: Expected Signal Frequency & The Swing Trading Edge</h2>
+        <h2>🎯 Topic 12: Expected Signal Frequency & The Swing Trading Edge</h2>
         <p>Understanding the difference between high-frequency scalping (account bleeding) and institutional swing trading (capital preservation and profit maximization):</p>
 
         <div class="grid-2">
@@ -1257,10 +1376,10 @@ ENTER-LONG_KRAKEN_SOLUSD_ZIGZAG.V4.SBD.100-KrakenDemo_1M_93004ed3330782d3770ccd1
       </div>
     </div>
 
-    <!-- ==================== SLIDE 12 ==================== -->
-    <div class="slide-panel" data-title="12. Running on Android (Phones & Tablets)">
+    <!-- ==================== SLIDE 13 ==================== -->
+    <div class="slide-panel" data-title="13. Running on Android (Phones & Tablets)">
       <div class="card">
-        <h2>📱 Topic 12: Running QuantStream on Android Phones & Tablets</h2>
+        <h2>📱 Topic 13: Running QuantStream on Android Phones & Tablets</h2>
         <p>Because Android is built on the Linux kernel, you can execute the Python strategy directly on Android smartphones and tablets without needing a desktop PC or server.</p>
 
         <div class="grid-2">
@@ -1354,7 +1473,7 @@ python Strategy.ZIGZAG.V4.SBD.67.py</code>
           ◀ <span class="label">Previous Slide</span>
         </button>
         <div class="slide-indicator">
-          <div class="slide-badge" id="slide-num-bottom">SLIDE 1 OF 12</div>
+          <div class="slide-badge" id="slide-num-bottom">SLIDE 1 OF 13</div>
           <div class="slide-topic-title" id="slide-title-bottom">How to Launch (.bat vs .ps1)</div>
         </div>
         <button id="next-btn-bottom" class="nav-btn" onclick="nextSlide()">
