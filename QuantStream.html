@@ -556,13 +556,13 @@
 
   <!-- Header -->
   <header>
-    <div class="badge">Institutional Quant Presentation Slides</div>
+    <div class="badge">Institutional Quant Presentation Slides (14 Topics)</div>
     <h1>QuantStream: ZigZag PA Strategy V4.1</h1>
     <p class="subtitle">Multi-Timeframe Harmonic Recognition Engine & Automated WunderTrading Execution System</p>
     <div class="meta-bar">
       <div class="meta-item"><span>Supported Exchanges:</span> <strong>Kraken & Binance (Futures & Spot)</strong></div>
       <div class="meta-item"><span>Example Pairs:</span> <strong>SOL/USD, SOL/USDT, SOL/USDC</strong></div>
-      <div class="meta-item"><span>Alt Timeframe:</span> <strong>Configurable (e.g., 67m, 47m)</strong></div>
+      <div class="meta-item"><span>Alt Timeframe:</span> <strong>Configurable (e.g., 67m, 47m, 19m)</strong></div>
       <div class="meta-item"><span>Base Poller:</span> <strong>1-Minute Execution</strong></div>
       <div class="meta-item"><span>Execution Modes:</span> <strong>Swing Reversal & Stacking Options</strong></div>
     </div>
@@ -577,7 +577,7 @@
           ◀ <span class="label">Previous Slide</span>
         </button>
         <div class="slide-indicator">
-          <div class="slide-badge" id="slide-num-top">SLIDE 1 OF 13</div>
+          <div class="slide-badge" id="slide-num-top">SLIDE 1 OF 14</div>
           <div class="slide-topic-title" id="slide-title-top">How to Launch (.bat vs .ps1)</div>
         </div>
         <button id="next-btn-top" class="nav-btn" onclick="nextSlide()">
@@ -642,7 +642,7 @@
         </div>
 
         <div class="alert alert-success">
-          <strong>Zero Manual Entry Needed:</strong> Everything (Kraken pair, 67m AltTF, unchecked delays, single-position swing mode, and the WunderTrading webhook URL & tokens) is already pre-configured.
+          <strong>Single-String Automated Setup:</strong> Parameters (pair, AltTF, delay flags, execution mode) are pre-configured, and pasting any single WunderTrading message string into <span class="code-pill">$wunderTradingSampleMessage</span> automatically populates all 5 trade directives via regex.
         </div>
       </div>
     </div>
@@ -655,9 +655,12 @@
 
         <div class="timeline">
           <div class="step-item">
-            <div class="step-dot"></div>
-            <div class="step-title">Stage 1: Parameter Injection & Display</div>
-            <div class="step-desc">PowerShell parses your environment variables (<span class="code-pill">ALT_TIMEFRAME=67</span>, <span class="code-pill">PYRAMIDING=1</span>, <span class="code-pill">USE_REVERSE_CLOSE=true</span>), formats the WunderTrading JSON webhook target array, prints the green startup banner, and hands execution over to Python.</div>
+            <div class="step-dot accent"></div>
+            <div class="step-title">Stage 1: Cross-Platform Hybrid Configuration Injection</div>
+            <div class="step-desc">The strategy engine detects its host OS via Python's <span class="code-pill">platform.system()</span>:
+              <br>&bull; <strong>Windows Mode</strong>: Consumes environment variables passed natively from PowerShell or the .BAT launcher.
+              <br>&bull; <strong>Linux Mode (Cloud VPS & Termux)</strong>: Dynamically parses <span class="code-pill">Start.Strategy.ZIGZAG.V4.SBD.67.ps1</span> directly via regex, extracting parameters, webhook URLs, and sample messages into memory without requiring PowerShell on Linux.
+            </div>
           </div>
 
           <div class="step-item">
@@ -1008,6 +1011,12 @@ $env:SYMBOLS     = "SOL/USDC"</code>
             </tbody>
           </table>
         </div>
+
+        <div class="alert alert-info" style="margin-top: 15px;">
+          <strong>Universal Exchange ID Rules (from script comments):</strong>
+          <br>&bull; <strong>Binance</strong>: Uses exchange driver <span class="code-pill">"binance"</span> for both Spot and Futures (differentiated solely by setting <span class="code-pill">MARKET_TYPE</span> to <span class="code-pill">"spot"</span> vs <span class="code-pill">"swap"</span>).
+          <br>&bull; <strong>Kraken</strong>: Uses two distinct exchange drivers: <span class="code-pill">"kraken"</span> for Spot physical trading, and <span class="code-pill">"krakenfutures"</span> for perpetual contract futures.
+        </div>
       </div>
     </div>
 
@@ -1041,6 +1050,21 @@ $env:SYMBOLS     = "SOL/USDC"</code>
 
         <div class="alert alert-info">
           <strong>Summary:</strong> You get the structural reliability of a 67-minute harmonic chart combined with the precision execution speed of a 1-minute poller.
+        </div>
+
+        <h3 style="color: var(--primary); margin-top: 25px;">🎯 Empirically Tested Optimal Alt-Timeframes</h3>
+        <p>Extensive backtesting and live forward trials indicate distinct sweet spots across exchanges:</p>
+        <div class="grid-2">
+          <div class="card" style="background: #0f172a; border-color: #1e293b; padding: 14px;">
+            <strong style="color: var(--warning);">Binance Futures SOL</strong>
+            <p style="font-size: 0.9rem; color: var(--text); margin: 6px 0 4px 0;"><span class="code-pill">38m</span> &bull; <span class="code-pill">40m</span> &bull; <span class="code-pill">47m</span></p>
+            <p style="font-size: 0.84rem; color: var(--text-muted); margin: 0;">Shorter cycle intervals (~30 bars/day) that rapidly capture directional expansions and generate high-frequency swing opportunities.</p>
+          </div>
+          <div class="card" style="background: #0f172a; border-color: #1e293b; padding: 14px;">
+            <strong style="color: var(--accent);">Kraken Futures SOL</strong>
+            <p style="font-size: 0.9rem; color: var(--text); margin: 6px 0 4px 0;"><span class="code-pill">19m</span> &bull; <span class="code-pill">35m</span> &bull; <span class="code-pill">67m</span> &bull; <span class="code-pill">75m</span></p>
+            <p style="font-size: 0.84rem; color: var(--text-muted); margin: 0;">Wide macro spans (<span class="code-pill">67m</span>, <span class="code-pill">75m</span>) for institutional trend preservation, with <span class="code-pill">19m</span> offering rapid tactical pivot triggers.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1078,13 +1102,23 @@ $env:SYMBOLS     = "SOL/USDC"</code>
               </tr>
               <tr>
                 <td><span class="code-pill">ALT_TIMEFRAME</span></td>
-                <td>67</td>
-                <td><strong>Matches your TradingView chart (67 minutes)</strong>, eliminating timeframe divergence.</td>
+                <td>19 / 47 / 67</td>
+                <td><strong>Higher-timeframe resolution in minutes</strong> (tested sweet spots: <span class="code-pill">38/40/47</span> for Binance Futures SOL, <span class="code-pill">19/35/67/75</span> for Kraken Futures SOL).</td>
               </tr>
               <tr>
                 <td><span class="code-pill">USE_ENTRY_DELAY</span></td>
                 <td>false</td>
-                <td>Disabled to match unchecked Simple 1-Bar Delay on TradingView (prevents 67m lag).</td>
+                <td>Disabled to match unchecked Simple 1-Bar Delay on TradingView (prevents timeframe lag).</td>
+              </tr>
+              <tr>
+                <td><span class="code-pill">USE_WT_DELAY</span></td>
+                <td>false</td>
+                <td>WT-Safe 1-Bar Delay toggle (keep false unless strict 1-bar execution delay is required).</td>
+              </tr>
+              <tr>
+                <td><span class="code-pill">USE_HA</span></td>
+                <td>false</td>
+                <td><strong>Heikin Ashi candles toggle</strong>: Set true to calculate pivots on smoothed Heikin Ashi bars, or false for standard raw candles.</td>
               </tr>
               <tr>
                 <td><span class="code-pill">USE_STACKING</span></td>
@@ -1116,8 +1150,18 @@ $env:SYMBOLS     = "SOL/USDC"</code>
                 <td>https://wtalerts.com/bot/other</td>
                 <td>Official WunderTrading plain-text endpoint (bypasses Cloudflare 403 on /bot/trading_view).</td>
               </tr>
+              <tr>
+                <td><span class="code-pill">$wunderTradingSampleMessage</span></td>
+                <td>Auto-Derived</td>
+                <td><strong>Single-string setup</strong>: Automatically generates all 5 trade directives (<span class="code-pill">enter_long</span>, <span class="code-pill">exit_long</span>, <span class="code-pill">enter_short</span>, <span class="code-pill">exit_short</span>, <span class="code-pill">exit_all</span>) via regex prefix stripping.</td>
+              </tr>
             </tbody>
           </table>
+        </div>
+
+        <div class="alert alert-success" style="margin-top: 18px;">
+          <strong>Universal Single Source of Truth:</strong>
+          These parameters in <span class="code-pill">Start.Strategy.ZIGZAG.V4.SBD.67.ps1</span> configure both Windows and Linux / Cloud deployments automatically. Thanks to the hybrid config loader in <span class="code-pill">Strategy.ZIGZAG.V4.SBD.67.py</span>, you never have to duplicate settings into bash scripts or manual exports.
         </div>
       </div>
     </div>
@@ -1224,13 +1268,53 @@ $env:SYMBOLS     = "SOL/USDC"</code>
           </div>
         </div>
 
-        <h3 style="color: var(--primary);">Webhook Delivery Format</h3>
+        <!-- Single-String Auto-Mapping Feature -->
+        <h3 style="color: var(--primary); margin-top: 25px;">⚡ Single-String Webhook Auto-Mapping Architecture</h3>
+        <p>Instead of manually copy-pasting 5 individual message directives into the script, you only paste <strong>any single message string</strong> from WunderTrading once. The launcher automatically strips the action prefix and constructs the full directive dictionary:</p>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span>Start.Strategy.ZIGZAG.V4.SBD.67.ps1</span>
+            <button class="copy-btn" onclick="copyText('$wunderTradingSampleMessage = &quot;ENTER-LONG_KRAKEN_SOLUSD_Strategy.ZIGZAG.V4.SBD.19_1M_93b74ed38d0782d377e4cd6e&quot;\n$baseMessageClean = $wunderTradingSampleMessage -replace \'^(ENTER-LONG_|EXIT-LONG_|ENTER-SHORT_|EXIT-SHORT_|EXIT-ALL_)\', \'\'\n$messages = @{\n    enter_long  = &quot;ENTER-LONG_$baseMessageClean&quot;\n    exit_long   = &quot;EXIT-LONG_$baseMessageClean&quot;\n    enter_short = &quot;ENTER-SHORT_$baseMessageClean&quot;\n    exit_short  = &quot;EXIT-SHORT_$baseMessageClean&quot;\n    exit_all    = &quot;EXIT-ALL_$baseMessageClean&quot;\n}')">Copy</button>
+          </div>
+          <code><span style="color: #6ee7b7;"># 🟢 PASTE ANY SINGLE FULL MESSAGE STRING FROM WUNDERTRADING HERE JUST ONCE:</span>
+<span style="color: #93c5fd;">$wunderTradingSampleMessage</span> = <span style="color: #fde047;">"ENTER-LONG_KRAKEN_SOLUSD_Strategy.ZIGZAG.V4.SBD.19_1M_93b74ed38d0782d377e4cd6e"</span>
+
+<span style="color: #6ee7b7;"># Automatically strips out the action prefix to calculate the base strategy string identifier</span>
+<span style="color: #93c5fd;">$baseMessageClean</span> = <span style="color: #93c5fd;">$wunderTradingSampleMessage</span> -replace <span style="color: #fde047;">'^(ENTER-LONG_|EXIT-LONG_|ENTER-SHORT_|EXIT-SHORT_|EXIT-ALL_)'</span>, <span style="color: #fde047;">''</span>
+
+<span style="color: #6ee7b7;"># Automatically builds the dictionary mapping for all trade directives</span>
+<span style="color: #93c5fd;">$messages</span> = @{
+    enter_long  = <span style="color: #fde047;">"ENTER-LONG_$baseMessageClean"</span>
+    exit_long   = <span style="color: #fde047;">"EXIT-LONG_$baseMessageClean"</span>
+    enter_short = <span style="color: #fde047;">"ENTER-SHORT_$baseMessageClean"</span>
+    exit_short  = <span style="color: #fde047;">"EXIT-SHORT_$baseMessageClean"</span>
+    exit_all    = <span style="color: #fde047;">"EXIT-ALL_$baseMessageClean"</span>
+}</code>
+        </div>
+
+        <div class="grid-3" style="margin-top: 15px;">
+          <div class="card" style="background: #0f172a; border-color: #1e293b; padding: 14px;">
+            <strong style="color: var(--primary);">1. Single Input</strong>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 6px 0 0 0;">Paste any copied webhook alert (even EXIT-ALL or SHORT). No need to edit 5 separate lines.</p>
+          </div>
+          <div class="card" style="background: #0f172a; border-color: #1e293b; padding: 14px;">
+            <strong style="color: var(--accent);">2. Regex Stripping</strong>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 6px 0 0 0;">Regex automatically strips the leading action verb, isolating the unique bot token identifier.</p>
+          </div>
+          <div class="card" style="background: #0f172a; border-color: #1e293b; padding: 14px;">
+            <strong style="color: var(--green);">3. Full Directive Synthesis</strong>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 6px 0 0 0;">Dynamically generates all 5 actions without typo risks or mismatched tokens.</p>
+          </div>
+        </div>
+
+        <h3 style="color: var(--primary); margin-top: 25px;">Webhook Delivery Format</h3>
         <div class="code-block">
           <div class="code-header"><span>HTTP Request</span></div>
           <code>POST https://wtalerts.com/bot/other
 Content-Type: text/plain; charset=utf-8
 
-ENTER-LONG_KRAKEN_SOLUSD_ZIGZAG.V4.SBD.100-Kraken_1M_93004ed3330782d3770ccd11</code>
+ENTER-LONG_KRAKEN_SOLUSD_Strategy.ZIGZAG.V4.SBD.19_1M_93b74ed38d0782d377e4cd6e</code>
         </div>
       </div>
     </div>
@@ -1411,14 +1495,13 @@ pip install ccxt pandas requests</code>
                 <p style="font-size: 0.8rem; color: var(--accent);">*Also set Termux Battery Usage to "Unrestricted" in Android Settings.</p>
               </div>
               <div class="step-item">
-                <div class="step-title">4. Launch the Bot</div>
-                <div class="step-desc">Set environment parameters and execute:</div>
+                <div class="step-title">4. Launch the Bot (Hybrid Auto-Config)</div>
+                <div class="step-desc">Thanks to the cross-platform hybrid loader, Python on Android/Linux automatically reads and parses your <span class="code-pill">Start.Strategy.ZIGZAG.V4.SBD.67.ps1</span> file. Simply run:</div>
                 <div class="code-block">
-                  <div class="code-header"><span>Termux Command</span><button class="copy-btn" onclick="copyText('export ALT_TIMEFRAME=\"47\"\nexport SYMBOLS=\"SOL/USD:USD\"\npython Strategy.ZIGZAG.V4.SBD.67.py')">Copy</button></div>
-                  <code>export ALT_TIMEFRAME="47"
-export SYMBOLS="SOL/USD:USD"
-python Strategy.ZIGZAG.V4.SBD.67.py</code>
+                  <div class="code-header"><span>Termux Command</span><button class="copy-btn" onclick="copyText('python Strategy.ZIGZAG.V4.SBD.67.py')">Copy</button></div>
+                  <code>python Strategy.ZIGZAG.V4.SBD.67.py</code>
                 </div>
+                <p style="font-size: 0.8rem; color: var(--accent);">*Zero manual export commands required—all parameters, webhook URLs, and sample messages are loaded directly from the .ps1 file into memory.</p>
               </div>
             </div>
           </div>
@@ -1466,6 +1549,118 @@ python Strategy.ZIGZAG.V4.SBD.67.py</code>
       </div>
     </div>
 
+    <!-- ==================== SLIDE 14 ==================== -->
+    <div class="slide-panel" data-title="14. Cross-Platform Hybrid & Cloud VPS">
+      <div class="card">
+        <h2>☁️ Topic 14: Cross-Platform Hybrid Engine & 24/7 Cloud Hosting</h2>
+        <p>The strategy architecture includes a <strong>Cross-Platform Hybrid Configuration Engine</strong> (<span class="code-pill">load_cross_platform_config()</span>) designed to bridge Windows desktops and 24/7 Linux cloud servers with zero setup friction.</p>
+
+        <div class="grid-2">
+          <!-- Architecture Card 1 -->
+          <div class="card" style="background: #0f172a; border-color: #1e293b;">
+            <h3 style="color: var(--primary);">🪟 Windows Native Mode</h3>
+            <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.7;">
+              When executed on Windows (<span class="code-pill">platform.system() == "windows"</span>):
+            </p>
+            <ul style="color: var(--text-muted); margin-left: 20px; font-size: 0.9rem; line-height: 1.7;">
+              <li>PowerShell (<span class="code-pill">.ps1</span>) or BAT launcher injects parameters directly into system memory environment variables.</li>
+              <li>Python reads active environment defaults instantly.</li>
+              <li>Interactive console windows display colored status telemetry.</li>
+            </ul>
+          </div>
+
+          <!-- Architecture Card 2 -->
+          <div class="card" style="background: #0f172a; border-color: #1e293b;">
+            <h3 style="color: var(--accent);">🐧 Linux / Cloud VPS Mode (Google Cloud &amp; Oracle)</h3>
+            <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.7;">
+              When executed on Linux or Cloud VPS (<span class="code-pill">platform.system() == "linux"</span>):
+            </p>
+            <ul style="color: var(--text-muted); margin-left: 20px; font-size: 0.9rem; line-height: 1.7;">
+              <li>Python automatically discovers and reads the local <span class="code-pill">Start.Strategy.ZIGZAG.V4.SBD.67.ps1</span> file.</li>
+              <li>Extracts all <span class="code-pill">$env:VAR</span> declarations using internal regex.</li>
+              <li>Parses <span class="code-pill">$webhookUrl</span> and <span class="code-pill">$wunderTradingSampleMessage</span>, strips the action prefix, and compiles the JSON target array dynamically.</li>
+              <li><strong>Zero Bash Scripts Needed</strong>: No duplicate shell scripts or manual export commands.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 style="color: var(--primary); margin-top: 25px;">🌐 Permanent 100% Free Linux Cloud VPS Providers</h3>
+        <p>Run your CCXT polling bot 24/7 without keeping your personal computer turned on:</p>
+
+        <div class="grid-3">
+          <div class="card" style="background: #0f172a; border-color: #1e293b; padding: 14px;">
+            <strong style="color: var(--primary);">🥇 Oracle Cloud (OCI) Always Free</strong>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 6px 0;"><strong>Cost: $0.00 Forever</strong></p>
+            <ul style="color: var(--text-muted); font-size: 0.82rem; line-height: 1.6; margin-left: 14px;">
+              <li>Up to 2 AMD x86 virtual machines or 4 ARM Ampere cores with 24 GB RAM.</li>
+              <li>Dedicated Linux server (Ubuntu/Debian) that runs 24/7/365 without sleeping or throttling.</li>
+            </ul>
+          </div>
+
+          <div class="card" style="background: #0f172a; border-color: #1e293b; padding: 14px;">
+            <strong style="color: var(--accent);">🥈 Google Cloud (GCP) Always Free</strong>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 6px 0;"><strong>Cost: $0.00 Forever</strong></p>
+            <ul style="color: var(--text-muted); font-size: 0.82rem; line-height: 1.6; margin-left: 14px;">
+              <li>1 e2-micro instance (1 GB RAM, 30 GB disk) in US regions.</li>
+              <li>Lightweight, runs continuously 24/7. Perfect for Python pollers.</li>
+            </ul>
+          </div>
+
+          <div class="card" style="background: #0f172a; border-color: #1e293b; padding: 14px;">
+            <strong style="color: var(--green);">🥉 AWS Free Tier</strong>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 6px 0;"><strong>Cost: $0.00 (12 Months)</strong></p>
+            <ul style="color: var(--text-muted); font-size: 0.82rem; line-height: 1.6; margin-left: 14px;">
+              <li>750 hours per month of t2.micro or t3.micro Linux instances.</li>
+              <li>Standard institutional cloud infrastructure.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 style="color: var(--primary); margin-top: 25px;">🚀 4 Terminal Commands to Deploy 24/7 on Linux VPS</h3>
+        <div class="timeline" style="margin-left: 0; padding-left: 18px;">
+          <div class="step-item">
+            <div class="step-title">1. Install System Dependencies</div>
+            <div class="step-desc">Update apt and install Python, pip, git, and tmux:</div>
+            <div class="code-block">
+              <div class="code-header"><span>Linux Terminal</span><button class="copy-btn" onclick="copyText('sudo apt update &amp;&amp; sudo apt install -y python3-pip python3-venv tmux git')">Copy</button></div>
+              <code>sudo apt update &amp;&amp; sudo apt install -y python3-pip python3-venv tmux git</code>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <div class="step-title">2. Clone Repository &amp; Install Python Packages</div>
+            <div class="step-desc">Clone your repository and install dependencies:</div>
+            <div class="code-block">
+              <div class="code-header"><span>Linux Terminal</span><button class="copy-btn" onclick="copyText('git clone &lt;your-repo&gt; QuantStream &amp;&amp; cd QuantStream\npython3 -m venv venv &amp;&amp; source venv/bin/activate\npip install -r requirements.txt')">Copy</button></div>
+              <code>git clone &lt;your-repo&gt; QuantStream &amp;&amp; cd QuantStream
+python3 -m venv venv &amp;&amp; source venv/bin/activate
+pip install -r requirements.txt</code>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <div class="step-title">3. Edit Parameters Directly in .ps1</div>
+            <div class="step-desc">Adjust any pair, timeframe, or webhook in the .ps1 file (the hybrid engine reads it automatically):</div>
+            <div class="code-block">
+              <div class="code-header"><span>Linux Terminal</span><button class="copy-btn" onclick="copyText('nano Start.Strategy.ZIGZAG.V4.SBD.67.ps1')">Copy</button></div>
+              <code>nano Start.Strategy.ZIGZAG.V4.SBD.67.ps1</code>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <div class="step-title">4. Launch in Detached Background Tmux Session</div>
+            <div class="step-desc">Start a persistent session that continues trading even after disconnecting your terminal:</div>
+            <div class="code-block">
+              <div class="code-header"><span>Linux Terminal</span><button class="copy-btn" onclick="copyText('tmux new -s tradingbot\npython Strategy.ZIGZAG.V4.SBD.67.py')">Copy</button></div>
+              <code>tmux new -s tradingbot
+python Strategy.ZIGZAG.V4.SBD.67.py</code>
+            </div>
+            <p style="font-size: 0.84rem; color: var(--accent); margin-top: 6px;">*Press <strong>Ctrl + B</strong>, then release and press <strong>D</strong> to detach. Reattach anytime with <span class="code-pill">tmux attach -t tradingbot</span>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- BOTTOM NAVIGATION BAR -->
     <div class="slide-nav bottom">
       <div class="nav-controls">
@@ -1473,7 +1668,7 @@ python Strategy.ZIGZAG.V4.SBD.67.py</code>
           ◀ <span class="label">Previous Slide</span>
         </button>
         <div class="slide-indicator">
-          <div class="slide-badge" id="slide-num-bottom">SLIDE 1 OF 13</div>
+          <div class="slide-badge" id="slide-num-bottom">SLIDE 1 OF 14</div>
           <div class="slide-topic-title" id="slide-title-bottom">How to Launch (.bat vs .ps1)</div>
         </div>
         <button id="next-btn-bottom" class="nav-btn" onclick="nextSlide()">
